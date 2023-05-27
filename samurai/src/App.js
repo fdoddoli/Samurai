@@ -3,9 +3,8 @@ import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 class App extends Component {
-  
   render(){
-
+    const {auth, profile} = this.props;
     return(
       <BrowserRouter>
         <div className="App notranslate" lang="es" translate="no">
@@ -21,4 +20,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
+  };
+};
+
+export default connect(mapStateToProps)(App);
