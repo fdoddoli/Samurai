@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
+import './App.css'
+
+import Navbar from './components/layout/Navbar';
+import SignIn from './components/auth/SignIn';
+import SignUp from './components/auth/SignUp';
 
 class App extends Component {
   render(){
@@ -8,13 +13,12 @@ class App extends Component {
     return(
       <BrowserRouter>
         <div className="App notranslate" lang="es" translate="no">
-          <Navbar />
+          {/* <Navbar auth={auth} profile={profile}/> */}
             <Switch>
               <Route path="/signin" component={SignIn} />
+              <Route path="/" auth={auth} component={SignUp} />
             </Switch>
           </div>
-          {/* Footer
-          BottomNav */}
       </BrowserRouter>
     )
   }
