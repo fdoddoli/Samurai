@@ -3,16 +3,15 @@ import GroupSummary from './GroupSummary';
 
 const GroupList = (props) => {
 
-    const {groups} = props;
+    const {groups, profiles, getProfile} = props;
 
     if(groups.length > 0){
         return(
             <div>
                 {groups && groups.map(group => {
-                    console.log(group);
                     return (
                         <div key={group.group_id}>
-                            <GroupSummary group_id={group.group_id} profile_id={group.profile_id}/>
+                            <GroupSummary id={group.id} group_id={group.group_id} profile_id={group.profile_id} profiles={profiles} getProfile={getProfile}/>
                         </div>  
                     )
                 })}
