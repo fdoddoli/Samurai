@@ -1,0 +1,26 @@
+.group-box{
+    background-color: white;
+    border: 2px solid black;
+    height: 72px;
+    align-content: center;
+}
+
+.group-image{
+    border-radius: 50%;
+    border: 1px solid black;
+    height: 48px;
+    width: 48px;
+}
+
+.resume_icon{
+    border: 1px solid black;
+    height: 38px;
+    width: 38px;
+    margin-top: 6px;
+}
+
+.group-name{
+    font-size: 22px;
+    font-weight: 700px;
+    margin-top: 8px;
+}

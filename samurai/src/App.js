@@ -13,6 +13,18 @@ class App extends Component {
   render(){
     const {auth, profile} = this.props;
     
+    let Dashboard;
+    if(auth.uid){
+      Dashboard = (
+        <Route exact path="/" auth={auth} profile={profile} component={Groups} />
+      );
+    }
+    else{
+      Dashboard = (
+        <Route path="/" auth={auth} component={SignIn} />
+      );
+    }
+
     let BottomNav
     if(auth.uid && profile.isLoaded){
       BottomNav = <BottomNavbar auth={auth}/>
@@ -26,7 +38,7 @@ class App extends Component {
         <div className="App notranslate" lang="es" translate="no">
           <Navbar auth={auth} profile={profile}/>
             <Switch>
-              <Route path="/" auth={auth} component={Groups} />
+              {Dashboard}
               <Route path="/signin" auth={auth} component={SignIn} />
               <Route path="/signup" auth={auth} component={SignUp} />
             </Switch>
