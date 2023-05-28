@@ -9,9 +9,10 @@ const GroupList = (props) => {
         return(
             <div>
                 {groups && groups.map(group => {
+                    console.log(group);
                     return (
                         <div key={group.group_id}>
-                            <GroupSummary group_id={group.group_id} profile={group.profile_id}/>
+                            <GroupSummary group_id={group.group_id} profile_id={group.profile_id}/>
                         </div>  
                     )
                 })}
