@@ -13,7 +13,7 @@ class App extends Component {
     return(
       <BrowserRouter>
         <div className="App notranslate" lang="es" translate="no">
-          {/* <Navbar auth={auth} profile={profile}/> */}
+          <Navbar auth={auth} profile={profile}/>
             <Switch>
               <Route path="/signin" component={SignIn} />
               <Route path="/" auth={auth} component={SignUp} />
