@@ -1,5 +1,6 @@
 import authReducer from './authReducer';
-import groupReducer from './groupReducers'
+import profileReducer from './profileReducer';
+import groupReducer from './groupReducer'
 import { combineReducers } from 'redux';
 import { firestoreReducer } from "redux-firestore";
 import { firebaseReducer } from "react-redux-firebase";
@@ -7,6 +8,7 @@ import { firebaseReducer } from "react-redux-firebase";
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  profile: profileReducer,
   group: groupReducer,
   firestore: firestoreReducer, //synced firestore data with app
   firebase: firebaseReducer //synced auth status with app

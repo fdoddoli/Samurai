@@ -2,13 +2,13 @@ const initState = {
     authError: null
 };
 
-const authReducer = (state = initState, action) => {
+const groupReducer = (state = initState, action) => {
     switch(action.type) {
         case 'JOIN_GROUP_SUCCESS':
-            console.log('signout success');
+            console.log('joined group success');
             return state;
         case 'JOIN_GROUP_ERROR':
-            console.log('signup successs');
+            console.log('joined group error');
             return {
                 ...state,
                 authError: null
@@ -18,4 +18,4 @@ const authReducer = (state = initState, action) => {
     }
 }
 
-export default authReducer;
+export default groupReducer;
