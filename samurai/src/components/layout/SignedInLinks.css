@@ -1,0 +1,42 @@
+.logo{
+    width: 120px;
+    height: 50px;
+    margin-bottom: 8px;
+}
+
+.navbar{
+    background: white;
+    border-bottom: 2px solid black;
+}
+
+.sign-out-container{
+    margin-right: 12px;
+}
+
+.sign-out-text{
+    color: black;
+    font-size: 24px;
+    font-weight: 700px;
+}
+
+.navbar-toggler{
+    border: 2px solid black;
+}
+
+.navbar-toggler-icon{
+    color: black;
+    font-weight: 700px;
+}
+
+
+.sign-out-nav-text{
+    color: black;
+    font-weight: 500px;
+}
+
+@media (max-width: 600px) {
+    .logo{
+        margin-right:110px;
+        margin-top:16px;
+    }
+}
