@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^8.7.1",
     "firebase-admin": "^9.11.1",
+    "algoliasearch": "^4.12.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "redux": "^4.1.0",
@@ -17,6 +18,7 @@
     "react-scripts": "5.0.1",
     "redux-firestore": "^0.15.0",
     "redux-thunk": "^2.4.2",
+    "react-firebase-hooks": "^3.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
