@@ -27,7 +27,7 @@ class SignIn extends Component {
 
   render() {
     const {auth, auth_error} = this.props;
-    // if (auth.uid) return <Redirect to ='/'/>
+    if (auth.uid) return <Redirect to ='/'/>
     return (
         <div>
           <div className="container position-relative start-50 translate-middle sign-in-form row">

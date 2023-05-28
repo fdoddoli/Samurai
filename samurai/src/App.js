@@ -4,20 +4,33 @@ import {connect} from 'react-redux';
 import './App.css'
 
 import Navbar from './components/layout/Navbar';
+import BottomNavbar from './components/layout/BottomNavbar';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
+import Groups from './components/groups/Groups';
 
 class App extends Component {
   render(){
     const {auth, profile} = this.props;
+    
+    let BottomNav
+    if(auth.uid && profile.isLoaded){
+      BottomNav = <BottomNavbar auth={auth}/>
+    }
+    else{
+      BottomNav = null
+    }
+
     return(
       <BrowserRouter>
         <div className="App notranslate" lang="es" translate="no">
           <Navbar auth={auth} profile={profile}/>
             <Switch>
-              <Route path="/signin" component={SignIn} />
-              <Route path="/" auth={auth} component={SignUp} />
+              <Route path="/" auth={auth} component={Groups} />
+              <Route path="/signin" auth={auth} component={SignIn} />
+              <Route path="/signup" auth={auth} component={SignUp} />
             </Switch>
+            {BottomNav}
           </div>
       </BrowserRouter>
     )

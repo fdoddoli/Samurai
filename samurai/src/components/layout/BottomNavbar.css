@@ -1,0 +1,27 @@
+.icon-bottom-navbar{
+    font-size: 24px;
+    color: black;
+    font-weight: 400px;
+}
+
+.navbar.bottom-navbar{
+    background-color: white;
+    color:black;
+    position: fixed;
+    height: 72px;
+    width: 100%;
+    overflow-x: auto;
+    border-top: 2px solid black;
+    border-bottom: none;
+    font-size: 10px;
+}
+
+.navbar-icons{
+    margin-top:-2%;
+}
+
+.btn-bottom-navbar{
+    background-color: transparent;
+    color: black;
+    font-size:10px;
+}

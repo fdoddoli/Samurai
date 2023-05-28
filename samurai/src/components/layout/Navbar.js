@@ -1,5 +1,4 @@
 import React from 'react'
-import './Navbar.css';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
 import GroupNavbar from './GroupNavbar'
