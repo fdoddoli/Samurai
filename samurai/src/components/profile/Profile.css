@@ -1,0 +1,142 @@
+.btn-create-profile{
+    left: 0;
+    font-size: 16px;
+    font-weight: 700px;
+    border-radius: 22px;
+    background-color: white;
+    padding-left: 22px;
+    padding-right: 22px;
+    border: 2px solid black;
+}
+
+.create-profile:hover{
+    box-shadow: 4px 4px 2px 1px rgba(0, 0, 0);
+}
+
+.profile-box{
+    background-color: white;
+    border: 2px solid black;
+    height: 72px;
+    align-content: center;
+}
+
+.profile_icon{
+    border: 1px solid black;
+    height: 38px;
+    width: 38px;
+    margin-top: 4px;
+}
+
+.profile-name{
+    font-size: 22px;
+    font-weight: 700px;
+    margin-top: 8px;
+}
+
+.btn-close{
+    color: black;
+}
+
+.btn-cancel{
+    background-color: white;
+    color: black;
+    border-radius: 0px;
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
+.profile-img{
+    width: 172px;
+    height: 172px;
+    border-radius: 50%;
+    margin-top: 10%;
+    margin-left: 30%;
+    border: 1px solid black;
+}
+
+.section-profile{
+    background-color: #90A9ED;
+    height: 100%;
+    padding-bottom: 32px;
+}
+
+.modal-body{
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.btn-img-profile{
+    font-size: 16px;
+    font-weight: 700px;
+    border-radius: 22px;
+    background-color: white;
+    padding-left: 22px;
+    padding-right: 22px;
+    border: 2px solid black;
+    margin-left: 21%;
+    width: 228px;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.logo-icon{
+    height: 28px;
+    width: 28px;
+}
+
+.profile-btn-text{
+    margin-top: 2px;
+}
+
+.section{
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.section-title{
+    font-weight: 700;
+}
+
+.section-content{
+    margin-top: 8px;
+}
+
+.card{
+    border: 1px solid black;
+    text-decoration: none;
+}
+
+.card-img-top{
+    height: 256px;
+}
+
+.carousel-control-next, .carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
+}
+
+.card-title{
+    font-weight: 600;
+}
+
+.card-text{
+    font-weight: 400;
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.btn-read-more{
+    font-size: 16px;
+    font-weight: 700px;
+    border-radius: 22px;
+    padding-left: 22px;
+    padding-right: 22px;
+    margin-top: 16px;
+    background-color: white;
+    border: 2px solid black;
+    box-shadow: 4px 4px 2px 1px rgba(0, 0, 0);
+}

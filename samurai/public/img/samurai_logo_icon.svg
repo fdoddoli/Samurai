@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="26px" viewBox="0 0 27 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M13.875,25.2 C20.3781529,25.2 25.65,20.5281529 25.65,14.025 C25.65,7.52184707 20.3781529,2.25 13.875,2.25 C7.37184707,2.25 2.1,7.52184707 2.1,14.025 C2.1,20.5281529 7.37184707,25.2 13.875,25.2 Z" id="path-1"></path>
+        <filter x="-6.4%" y="-6.5%" width="112.7%" height="113.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="UI" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landing-Page-Mobile-Copy-3" transform="translate(-96.000000, -177.000000)">
+            <g id="Group-2" transform="translate(86.000000, 173.000000)">
+                <g id="Group" transform="translate(10.000000, 4.000000)">
+                    <circle id="Mask" fill="#000000" cx="12.525" cy="12.525" r="12.525"></circle>
+                    <g id="outside-2">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#000000" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <circle id="inside" stroke="#000000" stroke-width="0.5" fill="#90A9ED" cx="12.6" cy="12.6" r="11.3"></circle>
+                    <text id="S" font-family="WixMadeforDisplay-Regular_Bold, Wix Madefor Display" font-size="12.6" font-weight="bold" fill="#000000">
+                        <tspan x="8.25" y="17.65">S</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
