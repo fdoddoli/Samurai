@@ -9,7 +9,7 @@ const ViewProfileModal = (props) => {
         <div className="modal fade" id="viewProfileModal" tabindex="-1" aria-labelledby="viewProfileModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div className="modal-body">
+                    <div className="modal-body view-profile-body">
                         {/* Image, name, education */}
                         <div className="section-profile">
                             <div className="">

@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useRef} from 'react';
-import ProfilesList from './ProfilesList'
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 import firebase from "../../config/fbConfig";
 import { connect } from 'react-redux';
 import './Profile.css';
+import ProfilesList from './ProfilesList'
+import CreateProfileModal from './CreateProfileModal';
+import {createProfile} from '../../store/actions/profileActions';
+
 
 const Profile = (props) => {
-    const {auth, profile} = props;
+    const {auth, profile, createProfile} = props;
     const [queryProfiles, setQueryProfiles] = useState("");
     const [profiles] = useCollectionData(queryProfiles);
 
@@ -16,8 +19,9 @@ const Profile = (props) => {
     }, [])
 
     // Function to get and create a new profile
-    const getProfile = (profile) => {
+    const getProfile = (profile, highlights) => {
         console.log(profile);
+        createProfile(auth.uid, profile, highlights);
     }
 
     // Function to get and edit general information a new profile
@@ -28,6 +32,7 @@ const Profile = (props) => {
     if(profiles && profile){
         return(
             <div className="container mt-4">
+                <CreateProfileModal getProfile={getProfile}/>
                 {/* <generalInformationModal generalInformation={generalInformation} getGeneralInformation={getGeneralInformation}/> */}
                 <div className="d-flex section-buttons">
                     {/* Basic Information */}
@@ -61,11 +66,11 @@ const mapStateToProps = (state) => {
     };
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-        
-//     }
-// }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createProfile: (user_id, profile, highlights) => dispatch(createProfile(user_id, profile, highlights)) 
+    }
+}
   
 
-export default connect(mapStateToProps, null)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

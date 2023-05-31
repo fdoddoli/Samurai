@@ -6,8 +6,8 @@ import './Profile.css'
 
 const ProfileSummary = (props) => {
 
-    const {profile, generalInformation, getProfile} = props;
-    
+    const {profile, generalInformation} = props;
+
     return(
         <div className="container mt-4">
             <ViewProfileModal profile={profile} generalInformation={generalInformation} />
@@ -22,7 +22,8 @@ const ProfileSummary = (props) => {
                 </div>
             </div>
         </div> 
-    )
+    );
+    
 }
 
 export default ProfileSummary;

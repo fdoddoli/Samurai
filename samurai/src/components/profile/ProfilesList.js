@@ -3,7 +3,7 @@ import ProfileSummary from './ProfileSummary';
 
 const ProfilesList = (props) => {
 
-    const {generalInformation, profiles, getProfile} = props;
+    const {generalInformation, profiles} = props;
 
     if(profiles.length > 0){
         return(
@@ -11,7 +11,7 @@ const ProfilesList = (props) => {
                 {profiles && profiles.map(profile => {
                     return (
                         <div key={profile.id}>
-                            <ProfileSummary  generalInformation={generalInformation} profile={profile} getProfile={getProfile}/>
+                            <ProfileSummary  generalInformation={generalInformation} profile={profile}/>
                         </div>  
                     )
                 })}
