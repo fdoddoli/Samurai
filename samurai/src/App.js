@@ -8,6 +8,7 @@ import BottomNavbar from './components/layout/BottomNavbar';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 import Groups from './components/groups/Groups';
+import Group from './components/groups/group/Group';
 import Profile from './components/profile/Profile';
 
 class App extends Component {
@@ -22,7 +23,7 @@ class App extends Component {
     }
     else{
       Dashboard = (
-        <Route path="/" auth={auth} component={SignIn} />
+        <Route exact path="/" component={SignIn} />
       );
     }
 
@@ -40,9 +41,10 @@ class App extends Component {
           <Navbar auth={auth} profile={profile}/>
             <Switch>
               {Dashboard}
-              <Route path="/signin" auth={auth} component={SignIn} />
-              <Route path="/signup" auth={auth} component={SignUp} />
+              <Route path="/signin" component={SignIn} />
+              <Route path="/signup" component={SignUp} />
               <Route path="/profile" component={Profile} />
+              <Route path="/group/:group/:id" component={Group} />
             </Switch>
             {BottomNav}
           </div>

@@ -3,6 +3,7 @@ import {useCollectionData} from 'react-firebase-hooks/firestore';
 import firebase from "../../config/fbConfig";
 import algoliasearch from 'algoliasearch';
 import ChooseProfileModal from '../profile/ChooseProfileModal';
+import {Link} from 'react-router-dom';
 import './Groups.css'
 
 const application_api_key = "3DPMYV4PP8";
@@ -35,21 +36,21 @@ const GroupSummary = (props) => {
         )
     }
     
-    if(group){
+    if(group && profiles){
         return(
             <div className="container mt-4">
                 <ChooseProfileModal id={id} group_id={group_id} profile_id={profile_id} profiles={profiles} getProfile={getProfile}/>
                 <div className="group-box row">
-                    {/* Groups Image */}
-                    <div className="col group-image-container">
-                        <img src={group.img} alt="" className="group-image"/>
-                    </div>
-
-                    {/* Group Name */}
-                    <div className="col-7 group-name">
-                        {group.name}
-                    </div>
-
+                    <Link to={"/group/" + group_id + "/" + id}  className="col-10 row group-link">
+                        {/* Groups Image */}
+                        <div className="col group-image-container">
+                            <img src={group.img} alt="" className="group-image"/>
+                        </div>
+                        {/* Group Name */}
+                        <div className="col-9 group-name">
+                            {group.name}
+                        </div>
+                    </Link>
                     {/* Profile */}
                     <div className="col" data-bs-toggle="modal" data-bs-target="#chooseProfileModal">
                         {resume_icon}
