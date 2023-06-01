@@ -22,6 +22,15 @@ const profileReducer = (state = initState, action) => {
                 ...state,
                 authError: null
             }
+        case 'ADD_SEEN_USER_SUCCESS':
+            console.log('add seen user success');
+            return state;
+        case 'ADD_SEEN_USER_ERROR':
+            console.log('add seen user error');
+            return {
+                ...state,
+                authError: null
+            }
         default:
             return state;
     }

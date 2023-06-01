@@ -45,3 +45,18 @@ export const createProfile= (user_id, profile, highlights) => {
         })
     }
 };
+
+export const addSeenUser = (auth_id, user_id, group_id) => {
+    return (dispatch, getState, {getFirebase, getFirestore}) => {
+        // make async call to database
+        const firebase = getFirebase();
+        const firestore = getFirestore();
+        firestore.collection('Users').doc(auth_id).collection("Groups").doc(group_id).update({
+            seen_users: firebase.firestore.FieldValue.arrayUnion(user_id)
+        }).then(() => {
+            dispatch({ type: 'ADD_SEEN_USER_SUCCESS'}); 
+        }).catch((err) => {
+            dispatch({ type: 'ADD_SEEN_USER_ERROR', err});
+        })
+    }
+};

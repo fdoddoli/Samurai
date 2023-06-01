@@ -5,10 +5,12 @@ import { connect } from 'react-redux';
 import './../Groups.css';
 import './../../../App.css';
 import User from './User';
+import {addMatch, updateMatch} from '../../../store/actions/matchActions';
+import {addSeenUser} from '../../../store/actions/profileActions';
 
 
 const Group = (props) => {
-    const {auth, group_id, id} = props;
+    const {auth, group_id, id, addMatch, updateMatch, addSeenUser} = props;
     const [idx, setIdx] = useState(null); //Couter to display user
     const [users, setUsers] = useState(null);
     const [user, setUser] = useState({profile: null, generalInformation: null});
@@ -124,20 +126,19 @@ const Group = (props) => {
     const swipe = async (direction) => {
         // Increase idx
         setIdx(idx + 1);
-        // Trigger action to add user it to seen_users
+        // If user liked this user
         if(direction == 1){
+            // If the other user has already liked this user
             const match_exists = await hasMatch(users[idx]);
-            // Check if auth.uid exists in the other user's matches
             if(match_exists){
-                // If it exits, and bool value is false, then update the other user's match to true AND add this match to the user
-                console.log("addMatch with true to user")
-                console.log("update match with true")
-            }
-            else{
-                // If it does not exist, then add this match to the user with false
-                console.log("addMatch with false")
-            }      
+                // Update the other user's match to true
+                updateMatch(users[idx], auth.uid);   
+            }   
+            // Add match to this user
+            addMatch(auth.uid, users[idx], match_exists);
         }
+        // Add swipd user it to seen_users
+        addSeenUser(auth.uid, users[idx], id);
     }
 
     if(user.profile != null && (idx < users.length || idx == 0)){
@@ -177,11 +178,13 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-        
-//     }
-// }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addMatch: (auth_id, user_id, match) => dispatch(addMatch(auth_id, user_id, match)),
+        updateMatch: (auth_id, user_id) => dispatch(updateMatch(auth_id, user_id)),
+        addSeenUser: (auth_id, user_id, group_id) => dispatch(addSeenUser(auth_id, user_id, group_id))
+    }
+}
   
 
-export default connect(mapStateToProps, null)(Group);
+export default connect(mapStateToProps, mapDispatchToProps)(Group);
