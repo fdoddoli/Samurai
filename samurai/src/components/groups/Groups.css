@@ -90,7 +90,45 @@
 }
 
 .profile-container{
-    height: 80%;
     background-color: white;
+    border-radius: 8px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px; 
+    padding-bottom: 32px;
+}
+
+.margin-bottom-profile{
+    margin-bottom: 124px;
+}
+
+.btn-swipe{
+    background-color: grey;
+    opacity: 0.5;
+    color: black;
+    font-weight: 500px;
+    border-radius: 0px;
+    padding-left: 22px;
+    padding-right: 22px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+}
+
+.left{
+    margin-left: 96px;
+}
+
+.left:focus{
+    text-decoration: none;
+    background-color: grey;
+}
+
+.right{
+    margin-right: 108px;
+}
+
+.right:focus{
+    text-decoration: none;
+    background-color: grey;
 }
 

@@ -6,3 +6,7 @@ body{
   overflow-y:visible;
 }
 
+.loading{
+  margin-top: 50%;
+}
+

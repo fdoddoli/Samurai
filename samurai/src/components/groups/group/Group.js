@@ -2,14 +2,16 @@ import React, { useState, useEffect, useRef} from 'react';
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 import firebase from "../../../config/fbConfig";
 import { connect } from 'react-redux';
-import './../Groups.css'
-//Import user
+import './../Groups.css';
+import './../../../App.css';
+import User from './User';
 
 
 const Group = (props) => {
     const {auth, group_id, id} = props;
-    const [idx, setIdx] = useState(0); //Couter to display user
-    const [users, setUsers] = useState(null)
+    const [idx, setIdx] = useState(null); //Couter to display user
+    const [users, setUsers] = useState(null);
+    const [user, setUser] = useState({profile: null, generalInformation: null});
 
     useEffect(async () => { 
         // Get members of group (algolia)
@@ -17,8 +19,17 @@ const Group = (props) => {
         // Get seen users (firebase)
         const seen_users = await getSeenUsers();
         // Filter members based on seen users
-        filterMembers(members, seen_users);
+        const result = await filterMembers(members, seen_users);
+        setUsers(result);
+        setIdx(0);
     }, [])
+
+     useEffect(() => {
+        if(users != null){
+            getUser();
+        }
+     }, [idx]);
+
 
     const getMembers = () => {
         return firebase.firestore().collection('Groups').doc(group_id).get().then((doc) => {
@@ -44,9 +55,54 @@ const Group = (props) => {
         });
     }
 
-    const filterMembers = (members, seen_users) => {
-        const result = members.filter(item => !seen_users.includes(item) && item != auth.uid);
-        setUsers(result);
+    const getUserGeneralInformation = () => {
+        return firebase.firestore().collection('Users').doc(users[idx]).get().then((doc) => {
+            if (doc.exists) {
+                return doc.data();
+            } else {
+                console.log("No such document");
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+    }
+
+    const getUserProfileID = async () => {
+       return firebase.firestore().collection('Users').doc(users[idx]).collection('Groups').where('group_id', '==', group_id).get().then((querySnapshot) => {
+            if (!querySnapshot.empty) {
+                const doc = querySnapshot.docs[0];
+                return doc.data().profile_id;
+            }
+            else{
+                console.log('Tracking ID not found in DB');
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+    }
+
+    const getUserProfile = async () => {
+        const profile_id = await getUserProfileID();
+        return firebase.firestore().collection('Users').doc(users[idx]).collection('Profiles').doc(profile_id).get().then((doc) => {
+            if (doc.exists) {
+                return doc.data();
+            } else {
+                console.log("No such document");
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+    }
+
+    const getUser = async () => {
+        const profile = await getUserProfile();
+        const generalInformation = await getUserGeneralInformation();
+        setUser({profile: profile, generalInformation: generalInformation});
+    }
+
+    const filterMembers = async (members, seen_users) => {
+        const result = await members.filter(item => !seen_users.includes(item) && item != auth.uid);
+        return result;
     }
 
     const hasMatch = (user_id) => {
@@ -65,14 +121,14 @@ const Group = (props) => {
     // Direction is 0 or 1, representing if the user swiped left or right, respectively
     // seen_users varies between groups, as users can have different profiles and the opinion of a user about someone can change in a different setting
     // matches do not vary between groups, as they represent a connection between 2 people
-    const swipe = async (user_id, direction) => {
+    const swipe = async (direction) => {
         // Increase idx
         setIdx(idx + 1);
         // Trigger action to add user it to seen_users
         if(direction == 1){
-            const hasMatch = await hasMatch();
+            const match_exists = await hasMatch(users[idx]);
             // Check if auth.uid exists in the other user's matches
-            if(hasMatch){
+            if(match_exists){
                 // If it exits, and bool value is false, then update the other user's match to true AND add this match to the user
                 console.log("addMatch with true to user")
                 console.log("update match with true")
@@ -84,16 +140,28 @@ const Group = (props) => {
         }
     }
 
-    
-    return(
-        <div className="container mt-4">
-            <div className="profile-container mt-3">
-
+    if(user.profile != null && (idx < users.length || idx == 0)){
+        return(
+            <div className="container position-relative mt-4 margin-bottom-profile">
+                <div className="">
+                    <User user={user}/>
+                </div>
+                <div className="position-fixed top-50 start-0 translate-middle">
+                    <button className="btn btn-swipe left" onClick={() => swipe(0)}>Left</button>
+                </div>
+                <div className="position-fixed top-50 start-100 translate-middle">
+                    <button className="btn btn-swipe right" onClick={() => swipe(1)}>Right</button>
+                </div>
             </div>
-        </div>
-    )
-    
-    
+        )
+    }
+    else{
+        return(
+            <div className="container position-relative">
+                <div className="position-absolute start-50 translate-middle loading">¡No users left to match with!</div>
+            </div> 
+        );
+    }
 }
 
 // Map dispatch to props to get auth
