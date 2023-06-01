@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import {signUp} from '../../store/actions/authActions';
 import { Redirect } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 
 
 class SignUp extends Component {
@@ -73,6 +72,13 @@ class SignUp extends Component {
     } 
 }
 
+const mapStateToProps = (state) => {
+  return {
+      auth_error: state.auth.authError,
+      auth: state.firebase.auth
+  }
+}
+
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -80,4 +86,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
