@@ -13,6 +13,15 @@ const profileReducer = (state = initState, action) => {
                 ...state,
                 authError: null
             }
+        case 'CREATE_PROFILE_SUCCESS':
+            console.log('create profile success');
+            return state;
+        case 'CREATE_PROFILE_ERROR':
+            console.log('create profile error');
+            return {
+                ...state,
+                authError: null
+            }
         default:
             return state;
     }

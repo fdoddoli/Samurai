@@ -20,7 +20,7 @@ const BottomNavbar = (props) => {
                     <br></br>
                     Matches
                 </Link>
-                <Link to={'/profile/' + auth.uid} className="btn btn-bottom-navbar">
+                <Link to={"/profile"} className="btn btn-bottom-navbar">
                     <i className="bi bi-person-circle icon-bottom-navbar" id="profile"></i>
                     <br></br>
                     Profile

@@ -40,9 +40,8 @@
 
 .joinGroupModal{
     margin-top: 28%;
-    border-radius: 2px;
-    border: 2px solid black;
-    background-color: #FF90E9;
+    border-radius: 4px;
+    background-color: white;
 }
 
 .modal-title-join-group{
