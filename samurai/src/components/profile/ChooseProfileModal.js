@@ -26,13 +26,9 @@ const ChooseProfileModal = (props) => {
     return (
         <div className="modal fade" id="chooseProfileModal" tabindex="-1" aria-labelledby="chooseProfileModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content">
-                    <div className="modal-header">
-                        <h3 className="modal-title-choose-profile" id="modal-title">Profiles</h3>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
+                <div class="modal-content chooseProfileModal">
                     <div className="modal-body">
-                        <form>
+                        <form className="mt-4 mb-2">
                             <label for="select-profile" className="form-label select-profile">Select Profile</label>
                             <select onChange={e => setCurrentProfile(e.target.value)} className="form-select" aria-label="No">
                                 <option selected>Profiles</option>
@@ -42,7 +38,7 @@ const ChooseProfileModal = (props) => {
                     </div>
                     <div class="modal-footer">
                         <button type="button" className="btn btn-grey" aria-label="Close" data-bs-dismiss="modal">Close</button>
-                        <button  type="button" className="btn btn-primary" onClick={() => getProfile(id, currentProfile)} data-bs-dismiss="modal">Done</button>
+                        <button  type="button" className="btn btn-choose" onClick={() => getProfile(id, currentProfile)} data-bs-dismiss="modal">Done</button>
                     </div>
                 </div>
             </div>

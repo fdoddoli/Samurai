@@ -6,7 +6,7 @@ const ViewProfileModal = (props) => {
     const {profile, generalInformation} = props;
 
     return (
-        <div className="modal fade" id="viewProfileModal" tabindex="-1" aria-labelledby="viewProfileModalLabel" aria-hidden="true">
+        <div className="modal fade" id={"viewProfileModal" + profile.id} tabindex="-1" aria-labelledby="viewProfileModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div className="modal-body view-profile-body">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import {storage} from "../../config/fbConfig";
 
 const CreateProfileModal = (props) => {
 
@@ -9,11 +10,25 @@ const CreateProfileModal = (props) => {
         most_impressive_thing: "",
         interests: ""
     });
-    const [highlights, setHighlights] = useState([])
+    const [highlights, setHighlights] = useState([]);
+    const [image, setImage] = useState({image: null, idx: null});
+    const [progress, setProgress] = useState(0);
+
+    useEffect(() => { 
+        if(image != null){
+            uploadImage();
+        }
+    }, [image])
 
     const editHighlight = (e, idx) => {
         let new_highlights = [...highlights];
         new_highlights[idx][e.target.id] = e.target.value;
+        setHighlights(new_highlights);
+    }
+
+    const editImageHighlight = (download_url, idx) => {
+        let new_highlights = [...highlights];
+        new_highlights[idx]["img"] = download_url;
         setHighlights(new_highlights);
     }
 
@@ -24,6 +39,41 @@ const CreateProfileModal = (props) => {
     const deleteHighlight = (idx) => {
         const new_highlights = highlights.splice(idx,1);
         setHighlights(new_highlights);
+    }
+
+    // Function to upload image to firebase
+    const uploadImage = async () => {
+        if(image.image == null) return;
+        const imageRef = storage.ref(`images/${image.image.name}`).put(image.image);
+        //Show progress of upload
+        imageRef.on('state_changed', snapshot => {
+        }, error => console.log(error), () => {
+            getDownloadURL(image.image.name, image.idx);
+        })
+    }
+
+    // Function to get download url from image
+    const getDownloadURL = (filename, idx) => {
+        const new_filename = rename(filename);
+        //Resize image takes time, user needs to wait for it to be done. Easy solution but not optimal.
+        setTimeout(async () => {
+            const download_url = await storage.ref("images").child(new_filename).getDownloadURL();
+            editImageHighlight(download_url, idx);
+        }, 5000);
+    }
+
+    // Function to rename image, based on firebase resize extension
+    const rename = (filename) => {
+        let new_filename;
+        if(filename.substring(filename.length - 5, filename.length) === ".jpeg"){
+            //JPEG
+            new_filename = filename.substring(0,filename.length - 5) + '_576x691.jpeg';
+        }
+        else{
+            //PNG O JPG
+            new_filename = filename.substring(0,filename.length - 4) + '_576x691.jpeg';
+        }
+        return new_filename;
     }
 
     return (
@@ -79,6 +129,10 @@ const CreateProfileModal = (props) => {
                                                 <input type="text" placeholder="optional" onChange={e => editHighlight(e, idx)} className="form-control" id="link"/>
                                             </div>
                                             {/* Imagen */}
+                                            <div className="mt-3">
+                                                <label for="image" className="form-label">Image</label>
+                                                <input type="file" accept=".jpg,.png"  onChange={(e) => setImage({image:e.target.files[0], idx: idx})} className="form-control" id="image"/>
+                                            </div>
                                         </div> 
                                     )
                                 })}

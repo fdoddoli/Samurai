@@ -80,6 +80,11 @@
     cursor: not-allowed;
 }
 
+.btn-disabled{
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
 .logo-icon{
     height: 28px;
     width: 28px;
@@ -139,4 +144,18 @@
     background-color: white;
     border: 2px solid black;
     box-shadow: 4px 4px 2px 1px rgba(0, 0, 0);
+}
+
+.chooseProfileModal{
+    margin-top: 28%;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.btn-choose{
+    background-color: black;
+    color: white;
+    border-radius: 0px;
+    padding-left: 24px;
+    padding-right: 24px;
 }

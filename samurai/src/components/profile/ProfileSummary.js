@@ -11,7 +11,7 @@ const ProfileSummary = (props) => {
     return(
         <div className="container mt-4">
             <ViewProfileModal profile={profile} generalInformation={generalInformation} />
-            <div className="profile-box row" data-bs-toggle="modal" data-bs-target="#viewProfileModal">
+            <div className="profile-box row" data-bs-toggle="modal" data-bs-target={"#viewProfileModal" + profile.id}>
                 {/* Group Name */}
                 <div className="col-10 profile-name">
                     {profile.name}

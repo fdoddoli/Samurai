@@ -36,7 +36,7 @@ const Profile = (props) => {
                 {/* <generalInformationModal generalInformation={generalInformation} getGeneralInformation={getGeneralInformation}/> */}
                 <div className="d-flex section-buttons">
                     {/* Basic Information */}
-                    <div className="btn btn-create-profile" data-bs-toggle="modal" data-bs-target="#basicInformationModal">
+                    <div className="btn btn-create-profile btn-disabled">
                         General Info
                     </div>
                     {/* Create New Profile */}
