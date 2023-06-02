@@ -1,4 +1,4 @@
-# Project Samurai
+# Samurai
 Tinder divided by invite-only groups.
 
 ### Blurb
