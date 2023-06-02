@@ -66,9 +66,11 @@ const Groups = (props) => {
     }
     else{
         return(
-            <div className="container">
-                Loading...
-            </div> 
+            <div className="container spinner">
+                <div class="spinner-border spinner-color" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
         );
     }
     

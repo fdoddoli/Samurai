@@ -20,11 +20,10 @@ const ProfilesList = (props) => {
     }
     else{
         return(
-            <div className="">
-                <p>No Profiles to Display</p>
-            </div>
-        ); 
-        
+            <div className="container position-relative">
+                <div className="position-absolute start-50 translate-middle loading">¡You have no profiles, start by creating one!</div>
+            </div> 
+        );
     }
 }
 
