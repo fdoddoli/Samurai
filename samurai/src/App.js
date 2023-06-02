@@ -10,6 +10,7 @@ import SignUp from './components/auth/SignUp';
 import Groups from './components/groups/Groups';
 import Group from './components/groups/group/Group';
 import Profile from './components/profile/Profile';
+import Matches from './components/matches/Matches';
 
 class App extends Component {
   render(){
@@ -44,6 +45,7 @@ class App extends Component {
               <Route path="/signin" component={SignIn} />
               <Route path="/signup" component={SignUp} />
               <Route path="/profile" component={Profile} />
+              <Route path="/matches" component={Matches} />
               <Route path="/group/:group/:id" component={Group} />
             </Switch>
             {BottomNav}
