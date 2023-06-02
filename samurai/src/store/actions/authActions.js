@@ -37,7 +37,7 @@ export const signUp = (user) => {
         first_name: user.first_name,
         last_name: user.last_name,
         img: "https://firebasestorage.googleapis.com/v0/b/samurai-d86ce.appspot.com/o/images%2FScreen%20Shot%202023-06-01%20at%2010.50.07%20AM_576x691.jpeg?alt=media&token=8c474a15-0fe0-4734-bdf9-9e11a6294857&_gl=1*x9t05h*_ga*MTA1MTg5MzY5Ni4xNjgwOTA5ODgy*_ga_CW55HF8NVT*MTY4NTYzNjMwOS4xNi4xLjE2ODU2MzgyNTIuMC4wLjA.",
-        education: {degree: "Computer Science", graduation_year: "2023", institution: "Stanford"}
+        education: {degree: "Computer Science", graduation_year: "2023", institution: "Stanford"},
         created_at: new Date()
       })
     }).then(() => {
