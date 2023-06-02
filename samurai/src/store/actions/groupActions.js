@@ -19,7 +19,8 @@ export const joinGroupUserCollection = (group_id, user_id) => {
         const firestore = getFirestore();
         return firestore.collection('Users').doc(user_id).collection("Groups").add({
             group_id: group_id,
-            profile_id: ""
+            profile_id: "",
+            seen_users: []
         }).then((docRef) => {
             dispatch(addGroupIdUserCollection (docRef.id, user_id));
         }).catch((err) => {
