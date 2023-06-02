@@ -39,10 +39,12 @@ const MatchSummary = (props) => {
     }
     else{
         return(
-            <div>
-                <h6>loading...</h6>
-            </div> 
-        )
+            <div className="container spinner">
+                <div class="spinner-border spinner-color" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        );
     }
     
     

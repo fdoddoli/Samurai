@@ -44,12 +44,12 @@ function AuthIsLoaded({ children }) {
   const auth = useSelector(state => state.firebase.auth)
   if (!isLoaded(auth)){
     return(
-        <div class="text-center spinner">
-          <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
+      <div class="text-center spinner">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
-      );
+      </div>
+    );
   }else{
     return children
   }
