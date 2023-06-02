@@ -6,7 +6,7 @@ import 'firebase/storage'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 var firebaseConfig = {
-    apiKey: "AIzaSyDfT31ykvNIklG-tDCQFkq9NUTrOHMp7Lg",
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: "samurai-d86ce.firebaseapp.com",
     projectId: "samurai-d86ce",
     storageBucket: "samurai-d86ce.appspot.com",
