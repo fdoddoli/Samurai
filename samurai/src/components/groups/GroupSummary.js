@@ -6,8 +6,8 @@ import ChooseProfileModal from '../profile/ChooseProfileModal';
 import {Link} from 'react-router-dom';
 import './Groups.css'
 
-const application_api_key = "3DPMYV4PP8";
-const index_api_key = "5b0f0dbda9b8facc273880f5c935a0ec";
+const application_api_key = process.env.REACT_APP_ALGOLIA_API_KEY;
+const index_api_key = process.env.REACT_APP_ALGOLIA_INDEX_API_KEY;
 const algolia_index_groups = 'Groups';
 const client_groups = algoliasearch(application_api_key, index_api_key);
 const groups_algolia = client_groups.initIndex(algolia_index_groups);
@@ -16,7 +16,6 @@ const GroupSummary = (props) => {
 
     const {id, group_id, profile_id, profiles, getProfile} = props;
     const [group, setGroup] = useState("");
-
 
     //Get group with Algolia
     useEffect(async () => {

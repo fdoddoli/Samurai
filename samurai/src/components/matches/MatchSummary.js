@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef} from 'react';
 import algoliasearch from 'algoliasearch';
 import './Matches.css'
 
-const application_api_key = "3DPMYV4PP8";
-const index_api_key = "5b0f0dbda9b8facc273880f5c935a0ec";
+const application_api_key = process.env.REACT_APP_ALGOLIA_API_KEY;
+const index_api_key = process.env.REACT_APP_ALGOLIA_INDEX_API_KEY;
 const algolia_index_users = 'Users';
 const client_users = algoliasearch(application_api_key, index_api_key);
 const users_algolia = client_users.initIndex(algolia_index_users);
